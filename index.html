@@ -37,6 +37,19 @@
   <div class="cancelWindow" onclick="newTaskFn()">Отменить</div>
 </div>
 </div>
-<svg version="1.1" class="redIcon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 490.667 490.667"style="enable-background:new 0 0 490.667 490.667;" xml:space="preserve"><g> <g><path d="M369.92,21.333L128,263.253V384h120.747l241.92-241.92L369.92,21.333z M231.04,341.333h-60.373V280.96L369.92,81.707 l60.373,60.373L231.04,341.333z"></path></g></g><g> <g><polygon points="384,320 384,426.667 42.667,426.667 42.667,128 192,128 234.667,85.333 0,85.333 0,469.333 426.667,469.333 426.667,277.333 "></polygon></g></g></svg>
+
+<div class="redWindow">
+  <p>Имя задачи</p>
+  <input cols="15" rows="1" class="task-name"></input>
+  <p>Описание задачи</p>
+  <textarea cols="15" rows="15" class="task-desc"></textarea>
+  <p>введите  время завершения</p>
+  <input class="task-datatime" type="datetime-local" name="partydate"/>
+  <div class="button-modal-block">
+  <div class="appendTask" onclick="redTaskFn()">Изменить</div>
+  <div class="cancelWindow" onclick="redTaskFn()">Отменить</div>
+</div>
+</div>
+   <svg version="1.1" class="redIcon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 490.667 490.667"style="enable-background:new 0 0 490.667 490.667;" xml:space="preserve"><g> <g><path d="M369.92,21.333L128,263.253V384h120.747l241.92-241.92L369.92,21.333z M231.04,341.333h-60.373V280.96L369.92,81.707 l60.373,60.373L231.04,341.333z"></path></g></g><g> <g><polygon points="384,320 384,426.667 42.667,426.667 42.667,128 192,128 234.667,85.333 0,85.333 0,469.333 426.667,469.333 426.667,277.333 "></polygon></g></g></svg>
    <script src="script.js"></script>
 </body>
