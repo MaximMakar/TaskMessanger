@@ -92,6 +92,3 @@ function appendActiveTask(){
 
 function drag(event){event.dataTransfer.setData('id', event.target.id)}
 
- 
-
-
