@@ -1,15 +1,16 @@
 const body=document.querySelector('body')
 const plusButton=document.querySelector('.plus')
 const taskWindow=document.querySelector('.newWindow')
+const redWindow=document.querySelector('.redWindow')
 const basket=document.querySelector(".basket")
 const redIcon=document.querySelector(".redIcon")
+const tasksList=document.querySelector('.tasksList')
+const defferedTaskList=document.querySelector("#deferred")
+const activeTaskList=document.querySelector("#actived")
+const textName=document.querySelector('.task-name')
+const textDesc=document.querySelector('.task-desc')
+const datatime=document.querySelector('.task-datatime')
 
-let tasksList=document.querySelector('.tasksList')
-let defferedTaskList=document.querySelector("#deferred")
-let activeTaskList=document.querySelector("#actived")
-let textName=document.querySelector('.task-name')
-let textDesc=document.querySelector('.task-desc')
-let datatime=document.querySelector('.task-datatime')
 let node_id=0;
 
 basket.style.display="none";
@@ -22,59 +23,57 @@ function newTaskFn(){
     datatime.value= Date.getDate + Date.getTime;
 }
 
-function redTaskFn(TaskName,TaskDate,TaskDesc){
-    taskWindow.classList.toggle('active');
+function redTaskFn(){
+    redWindow.classList.toggle('active');
     body.classList.toggle('modal-open');
-    textName.value="";
     datatime.value= Date.getDate + Date.getTime;
 }
 
 basket.ondragover=AllowDrop;
 defferedTaskList.ondragover=AllowDrop;
 activeTaskList.ondragover=AllowDrop;
-
+redIcon.ondragover=AllowDrop;
 
 
 function AllowDrop(event){
     event.preventDefault();
-    redIcon.style.display="block";
     basket.style.display="block";
+    redIcon.style.display="block";
 }
 
 basket.ondrop=dropTask;
-redIcon.ondrop=redTask;
 defferedTaskList.ondrop=dropDeffered;
 activeTaskList.ondrop=dropActive;
-
+redIcon.ondrop=redTaskFn;
 
 function dropTask(event){let itemId=event.dataTransfer.getData('id');
     console.log(itemId);
     event.target.append(document.getElementById(itemId));
-    redIcon.style.display="none";
     basket.style.display="none";
+    redIcon.style.display="none";
 }
     
  function redTask(event){let itemId=event.dataTransfer.getData('id');
     console.log(itemId);
     event.target.append(document.getElementById(itemId));
-    redIcon.style.display="none";
     basket.style.display="none";
+    redIcon.style.display="none";
 }
 
 function dropDeffered(event){let itemId=event.dataTransfer.getData('id');
     console.log(itemId);
     event.target.append(document.getElementById(itemId));
     defferedTaskList.append(document.getElementById(itemId));
-    redIcon.style.display="none";
     basket.style.display="none";
+    redIcon.style.display="none";
 }
 
  function dropActive(event){let itemId=event.dataTransfer.getData('id');
         console.log(itemId);
         event.target.append(document.getElementById(itemId));
         tasksList.append(document.getElementById(itemId));
-        redIcon.style.display="none";
         basket.style.display="none";
+        redIcon.style.display="none";
     }   
 
 function appendActiveTask(){
