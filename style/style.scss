@@ -4,6 +4,10 @@
     color: rgb(12, 12, 12);    
 }
 
+@mixin no-select{
+    user-select: none;
+}
+
 @mixin modal-window {
     display: none;
     width: 40%;
@@ -13,6 +17,7 @@
     border: 3px solid black;
     border-radius: 8px;
     padding: 10px;
+    user-select: none
 }
 @mixin button {
     width: 110px;
@@ -57,6 +62,7 @@
 }
 
 .task_list_container {
+    @include no-select;
     display: block;
     width: 30%;
     background-color: rgb(255, 252, 248);
@@ -94,8 +100,10 @@ body{
 
 
 .plus{
-    display: block;
+    display: absolute;
     @include svg-icon;
+    left: 10%;
+    top: 8%;
     &:hover {fill: aquamarine;}
 }
 
@@ -106,8 +114,9 @@ body{
 .appendTask:hover{border-color: aquamarine; color: aquamarine;}
 .cancelWindow:hover{border-color: coral; color: coral;}
 
-.newWindow{
+.newWindow, .redWindow{
     @include modal-window;
+    @include no-select;
     .task-name, .task-datatime, .task-desc{
         margin: 10px;
         border: 2px solid black;
@@ -116,7 +125,7 @@ body{
         
     }
 }
-.newWindow.active{
+.newWindow.active , .redWindow.active {
     @include modal-window-active
    
 }
@@ -157,7 +166,7 @@ body{
   }
 }
 
-body.modal-open>*:not(.newWindow.active) {
+body.modal-open>*:not(.newWindow.active, .redWindow.active) {
     filter: blur(6px);
     
   }
@@ -168,12 +177,12 @@ body.modal-open>*:not(.newWindow.active) {
     display: none;
     left: 85%;
     top:80%;
-}
+}  
 
 .basket{
     @include svg-icon;
     position: absolute;
     display: none;
-    left: 15%;
+    left: 10%;
     top:80%;
 }
