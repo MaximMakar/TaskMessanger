@@ -1,4 +1,7 @@
 .task_list_container {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   display: block;
   width: 30%;
   background-color: rgb(255, 252, 248);
@@ -33,10 +36,12 @@ body {
 }
 
 .plus {
-  display: block;
+  display: absolute;
   width: 10%;
   height: 10%;
   color: rgb(12, 12, 12);
+  left: 10%;
+  top: 8%;
 }
 .plus:hover {
   fill: aquamarine;
@@ -64,7 +69,7 @@ body {
   color: coral;
 }
 
-.newWindow {
+.newWindow, .redWindow {
   display: none;
   width: 40%;
   height: 45%;
@@ -73,15 +78,19 @@ body {
   border: 3px solid black;
   border-radius: 8px;
   padding: 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  user-select: none;
 }
-.newWindow .task-name, .newWindow .task-datatime, .newWindow .task-desc {
+.newWindow .task-name, .newWindow .task-datatime, .newWindow .task-desc, .redWindow .task-name, .redWindow .task-datatime, .redWindow .task-desc {
   margin: 10px;
   border: 2px solid black;
   resize: none;
   font-size: 20px;
 }
 
-.newWindow.active {
+.newWindow.active, .redWindow.active {
   position: absolute;
   top: 20;
   left: 28%;
@@ -91,10 +100,10 @@ body {
   justify-content: center;
   align-items: center;
 }
-.newWindow.active p {
+.newWindow.active p, .redWindow.active p {
   margin: 0px;
 }
-.newWindow.active .button-modal-block {
+.newWindow.active .button-modal-block, .redWindow.active .button-modal-block {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -147,7 +156,7 @@ body {
   color: rgb(0, 0, 0);
 }
 
-body.modal-open > *:not(.newWindow.active) {
+body.modal-open > *:not(.newWindow.active, .redWindow.active) {
   filter: blur(6px);
 }
 
@@ -167,6 +176,6 @@ body.modal-open > *:not(.newWindow.active) {
   color: rgb(12, 12, 12);
   position: absolute;
   display: none;
-  left: 15%;
+  left: 10%;
   top: 80%;
 }
